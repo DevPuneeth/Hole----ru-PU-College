@@ -1,0 +1,439 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="facilities_hostel.css">
+  <title>About Us</title>
+  
+  <style>
+    .container {
+        display: inline-block;
+        cursor: pointer;
+        transition: transform 0.1s; 
+      }
+      
+      .container:hover {
+        transform: scale(1.1); 
+      }
+      
+  
+      .bar1, .bar2, .bar3 {
+        width: 35px;
+        height: 4px;
+        background-color:white;
+        margin: 6px 0;
+        transition: 0.4s;
+      }
+  
+      .change .bar1 {
+        transform: translate(0, 11px) rotate(-45deg);
+      }
+  
+      .change .bar2 {opacity: 0;}
+  
+      .change .bar3 {
+        transform: translate(0, -11px) rotate(45deg);
+      }
+  
+      
+      .button-container {
+        display: flex;
+        flex-direction: column; 
+        align-items: center; 
+        margin-top: 20px;
+        overflow: hidden;
+      }
+  
+      .button {
+        width: 15cm;
+        height: 10cm;
+        background-color: #66FFCC;
+        color: black;
+        font-size: 30px;
+        font-weight: bold;
+        border: none;
+        border-radius: 0px;
+        cursor: pointer;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin: 1cm;
+        transition: all 0.5s;
+        opacity: 0;
+        transform: translateY(50px);
+      }
+  
+      .button:nth-child(1) {
+        animation: fadeInUp 0.5s ease 0.5s forwards;
+      }
+  
+      .button:nth-child(2) {
+        animation: fadeInUp 0.5s ease 1s forwards;
+      }
+  
+      .button:nth-child(3) {
+        animation: fadeInUp 0.5s ease 1.5s forwards;
+      }
+  
+      @keyframes fadeInUp {
+        from {
+          opacity: 0;
+          transform: translateY(50px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+  
+      
+      
+      .nav-bar {
+        background-color: white; 
+        height: 1.5cm;
+        display: flex;
+        justify-content: flex-end; 
+        align-items: center;
+        padding-right: 20px; 
+        position: relative; 
+        z-index: 1000; 
+      }
+      
+  
+      .menu-button {
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        right: 40px;
+        z-index: 999; 
+        background-color: #30305b;
+        border: 2px solid white;
+        width: 70px;
+        height: 40px;
+        border-radius: 5px; 
+        cursor: pointer;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+    
+    .social-media-container {
+      width: 3rem;
+      height: 16rem;
+      border-top-right-radius: 1rem;
+      border-bottom-right-radius: 1rem;
+      background-color: #262727; 
+      position: fixed;
+      top: 50%;
+      transform: translateY(-50%);
+      left: 0;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      overflow: hidden;
+      z-index: 1000;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.2); 
+    }
+
+    
+    @keyframes expand {
+      0% {
+        width: 3rem;
+      }
+      100% {
+        width: 4rem;
+      }
+    }
+
+    .social-media-container:hover {
+      animation: expand 0.3s ease forwards; 
+    }
+
+    
+    .social-media h2 {
+      font-size: 1rem;
+      margin: 0;
+      margin-top: 1rem; 
+      color: #fff; 
+    }
+
+    
+    .social-media ul {
+      list-style: none;
+      padding: 0;
+      margin-top: 1rem; 
+    }
+
+    
+    .social-media li {
+      margin-bottom: 1rem; 
+      transition: transform 0.3s ease; 
+    }
+
+    
+    .social-media li:hover {
+      transform: scale(1.1); 
+    }
+
+    
+    .social-media li a {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 2.5rem;
+      height: 2.5rem;
+      border-radius: 50%;
+      background-color: white;
+      font-size: 1.2rem;
+      color: #566573;
+      text-decoration: none;
+      transition: background-color 0.3s ease; 
+      animation: rotateIcon 1s infinite alternate; 
+    }
+
+    
+    .social-media li a:hover {
+      background-color: #EDBB99; 
+    }
+
+    
+    .social-media li a img {
+      width: 60%; 
+      height: auto; 
+    }
+
+    
+    @keyframes rotateIcon {
+      0% {
+        transform: rotate(0deg);
+      }
+      100% {
+        transform: rotate(360deg);
+      }
+    }
+
+    
+  
+  </style>
+</head>
+<body>
+  <!-- Top bar -->
+  <div class="top-bar">
+
+    <div class="logo">
+      <img src="logo.png" alt="College Logo">
+    </div>
+    <div class="college-info">
+      <h1>Vivekananda Lions Pre University College</h1>
+      <p>CN Road, Holehonnuru, Chitradurga road, Bhadravathi taluk, Shivamogga District, Karnataka, 577227</p> 
+    </div>
+  </div>
+
+  <!-- Nav bar -->
+  <nav>
+    <div class="menu-bar">
+      
+      <ul>
+        <li><a href="web2.html">Home</a></li>
+
+
+        <li><a href="">About<i class="fas fa-caret-down"></i></a>
+          <div class="dropdown-menu">
+            <ul>
+              <li><a href="about_principle.html">PRINCIPLE</a></li>
+              <li><a href="about_president.html">PRESIDENT</a></li>
+              <li><a href="about_secretary.html">SECRETARY</a></li>
+              <li><a href="about_treasurer.html">TREASURER</a></li>  
+              <li><a href="about_administrator.html">ADMINISTRATOR</a></li>       
+            </ul>
+          </div>
+        </li>
+  
+  
+          <li><a href="admissions.html">Admissions<i class="fas fa-caret-down"></i></a>
+  
+        </li>
+  
+  
+        <li><a href="">Courses<i class="fas fa-caret-down"></i></a>
+          <div class="dropdown-menu">
+            <ul>
+              <li><a href="courses_science.html">SCIENCE</a></li>
+              <li><a href="courses_commerce.html">COMMERCE</a></li>       
+            </ul>
+          </div>
+        </li>
+  
+  
+          <li><a >Facilities <i class="fas fa-caret-down"></i></a>
+          <div class="dropdown-menu">
+            <ul>
+              <li><a href="facilities_library.html">LIBRARIES</a></li>
+              <li><a href="facilities_hostel.html">HOSTEL</a></li>
+              <li><a href="facilities_transport.html">TRANSPORTATION</a></li>
+              <li><a href="facilities_technology.html">TECHNOLOGY</a></li>
+            </ul>
+          </div>
+        </li>
+  
+
+
+
+
+
+
+      <li><a href="">Student corner<i class="fas fa-caret-down"></i></a>
+        <div class="dropdown-menu">
+          <ul>
+            <li><a href="stco_scholar.html">SCHOLORSHIP</a></li>
+            <li><a href="stco_coe.html">CALENDAR OF EVENTS</a></li>
+            <li><a href="stco_result.html">RESULTS</a></li>
+            <li><a href="stco_timetable.html">TIME TABLE</a></li>        
+          </ul>
+        </div>
+      </li>
+
+
+      <li><a class="faculties" href="">Faculties<i class="fas fa-caret-down"></i></a>
+        <div class="dropdown-menu">
+            <ul>
+              <li><a href="SCIENCE_faculties.html">SCIENCE</a></li>
+              <li><a href="COMMERCE_faculties.html">COMMERCE</a></li>
+              <li><a href="KANNADA_faculties.html">KANNADA</a></li>
+              <li><a href="ENGLISH_faculties.html">ENGLISH</a></li>
+           
+            </ul>
+          </div>
+    </li>
+
+        <li><a href="news.html">News and Events</a></li>
+
+        <li><a href="gallery.html">Gallery</a></li>
+
+
+        <li><a href="contact.html">Contact us<i class="fas fa-caret-down"></i></a>
+        <div class="dropdown-menu">
+          <ul>
+            <li><a href="">CALL</a></li>
+            <li><a href="">WHATSAPP</a></li>
+            <li><a href="">INSTAGRAM</a></li>
+            <li><a href="">FACEBOOK</a></li>
+            <li><a href="">OTHER</a></li>
+          </ul>
+        </div>
+  </li>
+</nav>
+  </div>
+  <div class="image-container">
+    <img src="your.png" alt="Your Image" width=100% height=400px>
+  </div>
+  <body>
+    <header>
+      <h1>College Hostel</h1>
+    </header>
+  
+    <div class="hostel-info">
+      <div class="hostel">
+        <h2>Boys Hostel</h2>
+        <img src="boys_hostel.jpg" alt="Boys Hostel">
+        <p>Located in Block A</p>
+        <p>Capacity: 100 students</p>
+        <p>Facilities: Wi-Fi, Gym, Study Room</p>
+      </div>
+    </div>
+    <div class="hostel-info">
+      <div class="hostel">
+        <h2>Girls Hostel</h2>
+        <img src="girls_hostel.jpg" alt="Girls Hostel">
+        <p>Located in Block B</p>
+        <p>Capacity: 80 students</p>
+        <p>Facilities: Wi-Fi, Common Room, Library</p>
+      </div>
+    </div>
+    <div class="hostel-info">
+      <div class="hostel">
+        <h2>International Hostel</h2>
+        <img src="international_hostel.jpg" alt="International Hostel">
+        <p>Located in Block C</p>
+        <p>Capacity: 50 students</p>
+        <p>Facilities: Dining Hall, Recreation Area</p>
+      </div>
+    </div>
+  </div>
+  
+ 
+
+  <!-- Footer -->
+   
+  <footer>
+    <div class="footer-container">
+      <div class="contact-info">
+        <h2>Contact Information</h2>
+      
+
+  <ul>
+    <li><strong>Address:</strong> Vivekananda Lions Pre University College, CN Road, Holehonnuru, Chitradurga road, Bhadravathi taluk, Shivamogga District, Karnataka, 577227</li>
+    <li><strong>Phone:</strong> <a href="tel:+91-your-phone-number">+91-****</a></li>
+    <li><strong>Email:</strong> <a href="mailto:vlipucedu@gmail.com">vlipucedu@gmail.com</a></li>
+  </ul>
+        
+      </div>
+      <div class="social-media-container">
+        <div class="social-media">
+
+          <ul>
+            <li><a href=""><img src="instagram.png" alt="Instagram"></a></li>
+            <li><a href="#"><img src="facebook.png" alt="Facebook"></a></li>
+            <li><a href="#"><img src="whatsapp.png" alt="WhatsApp"></a></li>
+            <li><a href="#"><img src="twitter.png" alt="Twitter"></a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="quick-links">
+        <h2>Quick Links</h2>
+        <ul>
+          <li><a href="web2.html">Home</a></li>
+          <li><a href="about.html">About Us</a></li>
+          <li><a href="admissions.html">Admissions</a></li>
+          <li><a href="#courses-section">Courses</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="bottom-line">
+      <p>&copy; 2024 Vivekananda Lions Pre University College. All rights reserved.</p>
+    </div>
+  </footer>
+  <div class="backdrop" id="backdrop"></div>
+
+  <!-- JavaScript for menu button -->
+  <script>
+    function toggleMenu() {
+      var menu = document.getElementById("navMenu");
+      var backdrop = document.getElementById("backdrop");
+      var body = document.body;
+      
+      // Toggle 'change' class on the menu button
+      document.querySelector(".container").classList.toggle("change");
+      
+      // Toggle 'show' class on the menu
+      menu.classList.toggle("show");
+      
+      // Toggle backdrop visibility
+      backdrop.style.display = menu.classList.contains("show") ? "block" : "none";
+      
+      // Toggle 'menu-open' class on the body
+      body.classList.toggle("menu-open");
+      
+      // Prevent scrolling on the main page when the menu is open
+      if (body.classList.contains("menu-open")) {
+        body.style.overflow = "hidden";
+      } else {
+        body.style.overflow = "";
+      }
+    }
+  </script>
+</body>
+</html>

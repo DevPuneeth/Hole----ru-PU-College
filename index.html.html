@@ -1,0 +1,616 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>College Website</title>
+  <link rel="stylesheet" href="web2.css">
+  <style>
+    .container {
+      display: inline-block;
+      cursor: pointer;
+      transition: transform 0.1s; 
+    }
+    
+    .container:hover {
+      transform: scale(1.1); 
+    }
+    
+
+    .bar1, .bar2, .bar3 {
+      width: 35px;
+      height: 4px;
+      background-color:white;
+      margin: 6px 0;
+      transition: 0.4s;
+    }
+
+    .change .bar1 {
+      transform: translate(0, 11px) rotate(-45deg);
+    }
+
+    .change .bar2 {opacity: 0;}
+
+    .change .bar3 {
+      transform: translate(0, -11px) rotate(45deg);
+    }
+
+@keyframes pulseEffect {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.1);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+
+    .register-button {
+      width: 200px;
+      height: 60px;
+      background-color: #f62c1d;
+      color: white;
+      font-size: 20px;
+      font-weight: bold;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      margin-top: 20px;
+      transition: transform 0.3s, box-shadow 0.3s;
+      margin-left: 40px;
+      position: relative;
+    }
+    
+    .register-button:hover {
+      background-color: #464343;
+    }
+    
+    .register-button::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.1);
+      border-radius: 5px;
+      opacity: 0;
+      transition: opacity 0.3s ease;
+      pointer-events: none;
+    }
+    
+    .register-button:hover::before {
+      opacity: 1;
+    }
+    
+    
+    @keyframes wiggle {
+      0% {
+        transform: rotate(0deg);
+      }
+      20% {
+        transform: rotate(10deg);
+      }
+      40% {
+        transform: rotate(-10deg);
+      }
+      60% {
+        transform: rotate(5deg);
+      }
+      80% {
+        transform: rotate(-5deg);
+      }
+      100% {
+        transform: rotate(0deg);
+      }
+    }
+    
+
+    
+    .register-button:hover {
+      animation: wiggle 0.6s ease;
+    }
+
+    
+
+    
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    
+    .top-bar {
+      background-color:#30305b ; 
+      height: 4cm;
+      display: flex;
+      align-items: center;
+    }
+
+
+    .college-info {
+      flex: 1;
+      color: white; 
+      font-size: 25px;
+      text-align: left;
+      padding-left: 20px;
+      font-weight: bold;
+    }
+
+    .college-info p {
+      font-size: 20px;
+      margin-top: 5px;
+      font-weight: bold;
+      margin-left: 20px;
+      
+    }
+
+    .nav-bar {
+      background-color: white; 
+      height: 1.5cm;
+      display: flex;
+      justify-content: flex; 
+      align-items: center;
+      padding-right: 20px; 
+      position: relative; 
+      z-index: 1000; 
+    }
+    
+
+    .menu-button {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      right: 40px;
+      z-index: 999; 
+      background-color: #30305b;
+      border: 2px solid white;
+      width: 70px;
+      height: 40px;
+      border-radius: 5px; 
+      cursor: pointer;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    
+    
+    .social-media-container {
+      width: 3rem;
+      height: 16rem;
+      border-top-right-radius: 1rem;
+      border-bottom-right-radius: 1rem;
+      background-color: #262727; 
+      position: fixed;
+      top: 50%;
+      transform: translateY(-50%);
+      left: 0;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      overflow: hidden;
+      z-index: 1000;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.2); 
+    }
+
+    
+    @keyframes expand {
+      0% {
+        width: 3rem;
+      }
+      100% {
+        width: 4rem;
+      }
+    }
+
+    .social-media-container:hover {
+      animation: expand 0.3s ease forwards; 
+    }
+
+    
+    .social-media h2 {
+      font-size: 1rem;
+      margin: 0;
+      margin-top: 1rem; 
+      color: #fff; 
+    }
+
+    
+    .social-media ul {
+      list-style: none;
+      padding: 0;
+      margin-top: 1rem; 
+    }
+
+    
+    .social-media li {
+      margin-bottom: 1rem; 
+      transition: transform 0.3s ease; 
+    }
+
+    
+    .social-media li:hover {
+      transform: scale(1.1); 
+    }
+
+    
+    .social-media li a {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 2.5rem;
+      height: 2.5rem;
+      border-radius: 50%;
+      background-color: white;
+      font-size: 1.2rem;
+      color: #566573;
+      text-decoration: none;
+      transition: background-color 0.3s ease; 
+      animation: rotateIcon 1s infinite alternate; 
+    }
+
+    
+    .social-media li a:hover {
+      background-color: #EDBB99; 
+    }
+
+    
+    .social-media li a img {
+      width: 60%; 
+      height: auto; 
+    }
+
+    
+    @keyframes rotateIcon {
+      0% {
+        transform: rotate(0deg);
+      }
+      100% {
+        transform: rotate(360deg);
+      }
+    }
+
+    
+    
+    .truncated-content {
+      overflow: hidden;
+      margin-bottom: 1em; 
+      max-height: calc(10 * 1.2em); 
+      transition: max-height 0.5s ease; 
+    }
+
+    
+    .read-more-container {
+      display: flex;
+      justify-content: center;
+      margin-top: 1em; 
+    }
+
+    .read-more-button {
+      background-color: #4CAF50; 
+      border: none;
+      color: white;
+      padding: 15px 32px;
+      text-align: center;
+      text-decoration: none;
+      display: inline-block;
+      font-size: 16px;
+      border-radius: 10px; 
+      transition: background-color 0.1s; 
+      cursor: pointer;
+    }
+
+    .read-more-button:hover {
+      background-color: #45a049; 
+    }
+ 
+@keyframes pulseEffect {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.1);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+
+.read-more-button:hover {
+  animation: pulseEffect 0.5s infinite alternate;
+}
+
+  </style>
+</head>
+<body>
+  
+  <div class="top-bar">
+    <div class="logo">
+      <img src="logo.png" alt="College Logo" >
+    </div>
+    <div class="college-info">
+      <h1>Vivekananda Lions Pre University College</h1>
+      <p>CN Road, Holehonnuru, Chitradurga road, Bhadravathi taluk, Shivamogga District, Karnataka, 577227</p> 
+    </div>
+  </div>
+ 
+  <nav>
+    <div class="menu-bar">
+      
+      <ul>
+        <li><a href="web2.html">Home</a></li>
+
+
+        <li><a href="">About<i class="fas fa-caret-down"></i></a>
+        <div class="dropdown-menu">
+          <ul>
+            <li><a href="about_principle.html">PRINCIPLE</a></li>
+            <li><a href="about_president.html">PRESIDENT</a></li>
+            <li><a href="about_secretary.html">SECRETARY</a></li>
+            <li><a href="about_treasurer.html">TREASURER</a></li>  
+            <li><a href="about_administrator.html">ADMINISTRATOR</a></li>       
+          </ul>
+        </div>
+      </li>
+
+
+        <li><a href="admissions.html">Admissions<i class="fas fa-caret-down"></i></a>
+
+      </li>
+
+
+      <li><a href="">Courses<i class="fas fa-caret-down"></i></a>
+        <div class="dropdown-menu">
+          <ul>
+            <li><a href="courses_science.html">SCIENCE</a></li>
+            <li><a href="courses_commerce.html">COMMERCE</a></li>       
+          </ul>
+        </div>
+      </li>
+
+
+        <li><a >Facilities <i class="fas fa-caret-down"></i></a>
+        <div class="dropdown-menu">
+          <ul>
+            <li><a href="facilities_library.html">LIBRARIES</a></li>
+            <li><a href="facilities_hostel.html">HOSTEL</a></li>
+            <li><a href="facilities_transport.html">TRANSPORTATION</a></li>
+            <li><a href="facilities_technology.html">TECHNOLOGY</a></li>
+          </ul>
+        </div>
+      </li>
+
+
+
+
+
+
+        <li><a href="">Student corner<i class="fas fa-caret-down"></i></a>
+        <div class="dropdown-menu">
+          <ul>
+            <li><a href="stco_scholar.html">SCHOLORSHIP</a></li>
+            <li><a href="stco_coe.html">C.O.E</a></li>
+            <li><a href="stco_result.html">RESULTS</a></li>
+            <li><a href="stco_timetable.html">TIME TABLE</a></li>        
+          </ul>
+        </div>
+      </li>
+
+
+        <li><a class="faculties" href="">Faculties<i class="fas fa-caret-down"></i></a>
+            <div class="dropdown-menu">
+                <ul>
+                  <li><a href="SCIENCE_faculties.html">SCIENCE</a></li>
+                  <li><a href="COMMERCE_faculties.html">COMMERCE</a></li>
+                  <li><a href="KANNADA_faculties.html">KANNADA</a></li>
+                  <li><a href="ENGLISH_faculties.html">ENGLISH</a></li>
+               
+                </ul>
+              </div>
+        </li>
+
+        <li><a href="news.html">News and Events</a></li>
+
+        <li><a href="gallery.html">Gallery</a></li>
+
+
+        <li><a href="">Contact us<i class="fas fa-caret-down"></i></a>
+        <div class="dropdown-menu">
+          <ul>
+            <li><a href="contact.html">Call</a></li>
+            <li><a href="contact.html">WhatsApp</a></li>
+            <li><a href="contact.html">Instagram</a></li>
+            <li><a href="contact.html">Facebook</a></li>
+            <li><a href="contact.html">OTHER</a></li>
+          </ul>
+        </div>
+  </li>
+</ul>
+</nav>
+
+    
+    </div>
+
+    <div class="hero">
+      &nbsp;
+    </div>
+  </div>
+  <div class="image-container">
+    <img src="your.png" alt="Your Image" width=100% height=400px>
+  </div>
+  <div style="height: 2cm;"></div> 
+  
+  <div class="paragraph-container">
+    <h1>Join Us Today!</h1>
+    <p>We invite students from all walks of life to join our vibrant learning community at Vivekananda Lions Pre University College. Embrace the opportunity to pursue your academic ambitions, explore your interests, and grow as an individual. Register now and embark on an exciting journey of discovery and personal growth!</p>
+    <button class="register-button" onclick="openGoogleForm()">Register Now</button>
+  </div>
+
+
+
+  <div class="paragraph-container">
+    <h1>WELCOME TO LIONS---</h1>
+    <div style="height: 1cm;"></div>
+    <div class="truncated-content" id="paragraph2">
+      <p>
+        Vivekananda Lions Pre University College, nestled in the idyllic locale of 
+        Holehonnur, stands as a beacon of educational excellence, poised to usher in a 
+        new era of holistic learning and development. Our institution epitomizes a 
+        commitment to nurturing young minds, providing an unparalleled amalgamation 
+        of academic rigor, co-curricular enrichment, and comprehensive competitive 
+        exam coaching. 
+        Embodying the spirit of Swami Vivekananda's philosophy, we aspire to 
+        empower students to realize their fullest potential across all facets of their 
+        journey towards knowledge and self-discovery. With a meticulously crafted 
+        curriculum, we ensure that every learner is equipped not only with academic 
+        proficiency but also with essential life skills and a keen sense of social 
+        responsibility. 
+        At Vivekananda Lions, we understand that education transcends the confines of 
+        textbooks. Hence, in addition to rigorous academic training, our students benefit 
+        from a plethora of co-curricular activities designed to foster creativity, critical 
+        thinking, and leadership qualities. From competitive exam preparation 
+        encompassing KCET, JEE, NEET, NATA, to specialized upskilling programs, 
+        we offer a comprehensive array of opportunities to broaden horizons and ignite 
+        passions. 
+        Moreover, recognizing the pivotal role of physical well-being in holistic 
+        development, we provide state-of-the-art sports coaching facilities, nurturing 
+        sporting talent and instilling values of discipline, teamwork, and resilience. Our 
+        commitment extends beyond the classroom, with seamless hostel 
+        accommodations ensuring a conducive environment for learning and personal 
+        growth for students from diverse backgrounds. 
+        Vivekananda Lions Pre University College represents not merely an educational 
+        institution but a transformative journey, where each student is guided, inspired, 
+        and encouraged to progress towards excellence in every facet of their being. We 
+        invite parents and students alike to embark on this enriching odyssey with us, 
+        where the destination is not just academic success but the realization of one's 
+        true potential and the pursuit of a brighter tomorrow.
+
+
+
+
+</p>
+  </div>
+  <div class="read-more-container">
+  <button class="read-more-button" onclick="toggleReadMore('paragraph2')">Read More</button>
+</div>
+</div>
+<div id="courses-section" class="courses-offered">
+  <h1 style="text-align: center;">COURSES OFFERED----------------</h1>
+  <ul class="button-container">
+    <li><a href="courses_science.html" class="button"><span>SCIENCE</span></a></li>
+    <li><a href="courses_commerce.html" class="button"><span>COMMERCE</span></a></li>
+  </ul>
+</div>
+  
+  <footer>
+    <div class="footer-container">
+      <div class="contact-info">
+        <h2>Contact Information</h2>
+      
+
+  <ul>
+    <li><strong>Address:</strong> Vivekananda Lions Pre University College, CN Road, Holehonnuru, Chitradurga road, Bhadravathi taluk, Shivamogga District, Karnataka, 577227</li>
+    <li><strong>Phone:</strong> <a href="tel:+91-your-phone-number">+91-****</a></li>
+    <li><strong>Email:</strong> <a href="mailto:vlipucedu@gmail.com">vlipucedu@gmail.com</a></li>
+  </ul>
+        
+      </div>
+      <div class="social-media-container">
+        <div class="social-media">
+
+          <ul>
+            <li><a href=""><img src="instagram.png" alt="Instagram"></a></li>
+            <li><a href="#"><img src="facebook.png" alt="Facebook"></a></li>
+            <li><a href="#"><img src="whatsapp.png" alt="WhatsApp"></a></li>
+            <li><a href="#"><img src="twitter.png" alt="Twitter"></a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="quick-links">
+        <h2>Quick Links</h2>
+        <ul>
+          <li><a href="web2.html">Home</a></li>
+          <li><a href="admissions.html">Admissions</a></li>
+          <li><a href="#courses-section">Courses</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="bottom-line">
+      <p>&copy; 2024 Vivekananda Lions Pre University College. All rights reserved.</p>
+    </div>
+  </footer>
+  
+  <div class="backdrop" id="backdrop"></div>
+  <script>
+  function toggleMenu() {
+  var menu = document.getElementById("navMenu");
+  var backdrop = document.getElementById("backdrop");
+  var body = document.body;
+  
+  
+  document.querySelector(".container").classList.toggle("change");
+  
+  
+  menu.classList.toggle("show");
+  
+  
+  backdrop.style.display = menu.classList.contains("show") ? "block" : "none";
+  
+  
+  body.classList.toggle("menu-open");
+  
+  
+  if (body.classList.contains("menu-open")) {
+    body.style.overflow = "hidden";
+  } else {
+    body.style.overflow = "";
+  }
+}
+
+
+document.querySelectorAll(".nav-menu ul li a").forEach(item => {
+  item.addEventListener("click", function() {
+    toggleMenu(); 
+  });
+});
+
+function toggleReadMore(paragraphId) {
+  var paragraph = document.getElementById(paragraphId);
+  var button = paragraph.nextElementSibling.querySelector('.read-more-button');
+
+  if (paragraph.classList.contains('truncated')) {
+    
+    paragraph.style.maxHeight = paragraph.scrollHeight + 'px'; 
+    button.textContent = 'Read Less';
+  } else {
+    
+    paragraph.style.maxHeight = 'calc(10 * 1.2em)'; 
+    button.textContent = 'Read More';
+  }
+
+  
+  paragraph.classList.toggle('truncated');
+}
+
+document.querySelectorAll(".dropdown-menu").forEach(menu => {
+  menu.addEventListener("mouseleave", function() {
+    
+    setTimeout(() => {
+      menu.style.display = "none";
+    }, 300);
+  });
+});
+function openGoogleForm() {
+  window.open('https://docs.google.com/forms/d/e/1FAIpQLSeVWDw4wsoxIhoFGfGYcvw_th0JF_qp9milc9d_P47UTy3a5Q/viewform', '_blank');
+}
+
+  </script>
+</body>
+</html>
